@@ -1,6 +1,7 @@
 streamlit==1.24.1
-opencv-python-headless==4.7.0.72
-numpy==1.24.3
-av==10.0.0
+opencv-python-headless==4.5.3.56
+numpy==1.21.2
+av==8.0.3
 streamlit-webrtc==0.45.0
-tensorflow==2.13.0
+tensorflow==2.6.0
+keras==2.6.0
