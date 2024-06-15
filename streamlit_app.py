@@ -10,7 +10,8 @@ model = load_model('bestmodelprediction.h5')
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
         # Initialize the face cascade classifier
-        self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+        self.face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
         
     def transform(self, frame):
         # Convert the image to grayscale
