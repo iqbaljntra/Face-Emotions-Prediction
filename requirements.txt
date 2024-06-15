@@ -4,4 +4,3 @@ numpy==1.21.2
 av==8.0.3
 streamlit-webrtc==0.45.0
 tensorflow==2.6.0
-keras==2.6.0
