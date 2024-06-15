@@ -1,7 +1,10 @@
 import cv2
 import numpy as np
 import streamlit as st
+import av
+import io
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
+
 from keras.models import load_model
 
 # Load pre-trained model
@@ -9,10 +12,7 @@ model = load_model('bestmodelprediction.h5')
 
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
-        # Initialize the face cascade classifier
-       self.face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-
-
+        self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         
     def transform(self, frame):
         # Convert the image to grayscale
