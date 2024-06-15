@@ -1,7 +1,10 @@
 import cv2
 import numpy as np
 import streamlit as st
+import av
+import io
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
+
 from keras.models import load_model
 
 # Load pre-trained model
@@ -9,9 +12,7 @@ model = load_model('bestmodelprediction.h5')
 
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
-        # Directly specify the cascade classifier path
-        cascade_path = 'path/to/your/opencv/haarcascades/haarcascade_frontalface_default.xml'
-        self.face_cascade = cv2.CascadeClassifier(cascade_path)
+        self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         
     def transform(self, frame):
         # Convert the image to grayscale
@@ -61,5 +62,8 @@ def main():
     st.title('Real-time Face Emotion Detection')
     st.set_option('deprecation.showfileUploaderEncoding', False)
 
-    # Start the video stream from default webcam
-    webrtc_streamer(key="default", video_transformer_factory=VideoTransformer)
+    # Start the video stream
+    webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
+
+if __name__ == '__main__':
+    main()
