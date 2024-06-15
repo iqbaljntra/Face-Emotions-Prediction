@@ -61,8 +61,5 @@ def main():
     st.title('Real-time Face Emotion Detection')
     st.set_option('deprecation.showfileUploaderEncoding', False)
 
-    # Start the video stream
-    webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
-
-if __name__ == '__main__':
-    main()
+    # Start the video stream from default webcam
+    webrtc_streamer(key="default", video_transformer_factory=VideoTransformer)
